@@ -1,0 +1,83 @@
+﻿@model Form
+@{
+    ViewData["Title"] = "Index";
+}
+
+    <div class="container">
+        <header class="header">
+          <div class="d-flex justify-content-center">
+            <p>Uğura gedən yol </p><img src="./assets/img/Group 1.svg" alt=""><p>dan kecir</p>
+          </div>
+            <h2 id="title" class="text-center">Reserve'All MMC şirkəti könüllü vakansiya elan edir:</h2>
+            <p id="description" class="description text-center">
+                2 ay müddətində bizimlə könüllü işləyən şəxslərə şirkətimiz tərəfindən sertifikat veriləcək və proqramın sonunda
+                uğurlu şəxslər iş ilə təmin olunacaq!
+            </p>
+        </header>
+        <form method="post">
+            <div class="form-group">
+                <label id="name-label" for="name">Ad & Soyad</label>
+                <input asp-for="Fullname" class="form-control" placeholder="Ad və soyad daxil edin" /> <br />
+                <span asp-validation-for="Fullname" class="text-danger" ></span>
+            </div>
+            <div class="form-group">
+                <label id="name-label" for="name">Telefon nömrəsi</label>
+                <input asp-for="PhoneNumber" class="form-control" placeholder="Telefon nömrəsi daxil edin" /><br />
+                <span asp-validation-for="PhoneNumber" class="text-danger" ></span>
+
+            </div>
+            <div class="form-group">
+                <label id="email-label" for="email">E-poçt</label>
+                <input asp-for="Email" class="form-control" placeholder="E-mail daxil edin"/><br />
+                <span asp-validation-for="Email" class="text-danger" ></span>
+                   
+            </div>
+            <div class="form-group">
+                <label id="number-label" for="number">Yaş<span class="clue"></span></label>
+                <input asp-for="Age" min="16" max="40" class="form-control" placeholder="Yaşınızı daxil edin" /><br />
+                <span asp-validation-for="Age" class="text-danger" ></span>
+            </div>
+            <div class="form-group">
+                <p>Sizə haradan işləmək rahatdır?</p>
+                <select  class="form-control" asp-for="WorkId" asp-items="@(new SelectList(ViewBag.Work,"Id","Name"))" >
+                    <option disabled selected>Seçim edin:</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <p>
+                    Təhsil aldığınız universitet:
+                </p>
+                <select class="form-control"  asp-for="UniversityId" asp-items="@(new SelectList(ViewBag.University,"Id","Name"))" >
+                    <option disabled selected >Universitet seçin:</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <p>
+                    Tələblər:
+                </p>
+                <ul>
+                    <li>Komputer ilə işləmə bacarığı</li>
+                    <li>MS Office proqramları ilə istifadə bacarığı arzu olunandır</li>
+                    <li>Kollektiv ilə işləmə bacarığı</li>
+                    <li>Öyrənib və öyrətməyə həvəsli olmaq</li>
+                    <li>Korporativ imic üçün xarici görünüş vacibdir</li>
+                </ul>
+                
+            </div>
+
+            <div class="form-group">
+                <p>Sualınız varsa bizə yönləndirin:</p>
+                <textarea asp-for="Message" class="input-textarea"
+                    placeholder=""></textarea>
+            </div>
+
+            <div class="form-group">
+                <button type="submit" id="submit" class="submit-button">
+                    Göndər
+                </button>
+            </div>
+        </form>
+    </div>
+
